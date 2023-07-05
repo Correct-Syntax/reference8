@@ -8,7 +8,8 @@ var ctx = null;
 var canvasWidth = ref(500);
 var canvasHeight = ref(500);
 var gridWidth = ref(1);
-var gridColor = ref("black");
+var gridColorHex = ref("#ffffff");
+var gridOpacity = ref(100);
 var gridSize = ref("1/3");
 var image = new Image();
 var imageXPos = 0;
@@ -67,17 +68,19 @@ function drawGrid(){
   let numOfLinesWidth =  pixelsTo(gridSize.value, canvasWidth.value);
   let numOfLinesHeight =  pixelsTo(gridSize.value, canvasHeight.value);
 
+  let color = changeGridColor(gridColorHex.value, gridOpacity.value);
+
   // Draw Horizontal Grid lines
   for (let i = 1; i < numOfLinesWidth; i++) { 
     // drawLine(position-X, position-Y, Width, Height, Color);
     // Divide the width of the canvas by the number of lines 
     // Then multiply it by which line it is on the grid
-    drawLine((canvasWidth.value / numOfLinesWidth) * i, 0, gridWidth.value, canvasHeight.value, gridColor.value); 
+    drawLine((canvasWidth.value / numOfLinesWidth) * i, 0, gridWidth.value, canvasHeight.value, color); 
   }
 
   // Draw Vertical Grid lines
   for (let i = 1; i < numOfLinesHeight; i++) {
-    drawLine(0, (canvasHeight.value / numOfLinesHeight) * i, canvasWidth.value, gridWidth.value, gridColor.value);
+    drawLine(0, (canvasHeight.value / numOfLinesHeight) * i, canvasWidth.value, gridWidth.value, color);
   }
 
   ctx.restore();
@@ -139,11 +142,11 @@ function hexToRgb(hex) {
 function changeGridColor(hexNum, opacity){
   
   let RGB = hexToRgb(hexNum);
-  let alpha = opacity // Convert
+  let alpha =  opacity / 100;
 
-  return "rgba(" + RGB.r + "," + RGB.g + "," + RGB.a + "," + alpha + ")";
+  return "rgba(" + RGB.r + "," + RGB.g + "," + RGB.b + "," + alpha + ")";
 }
-
+console.log(changeGridColor("#fff", 50))
 
 
 
@@ -221,8 +224,13 @@ function onSlider(e) {
 
 function onChangeColor(color) {
 
+//  gridColorHex
 
+}
 
+function onChangeOpacity(color) {
+
+//gridOpacity
 
 }
 
