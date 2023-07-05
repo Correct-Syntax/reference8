@@ -1,11 +1,15 @@
 <script setup>
 import { ref, onMounted, nextTick } from 'vue'
+import canvasPresets from '../utils'
 
 const container = ref(null);
 const canvas = ref(null);
 var ctx = null;
 var canvasWidth = ref(500);
 var canvasHeight = ref(500);
+var gridWidth = ref(1);
+var gridColor = ref("black");
+var gridSize = ref("1/3");
 var image = new Image();
 var imageXPos = 0;
 var imageYPos = 0;
@@ -35,7 +39,8 @@ function loadImage(ctx) {
     imageWidth = width * ratio;
     imageHeight = height * ratio;
 
-    drawImage(ctx);
+    drawImage();
+    drawGrid();
   }
 }
 
@@ -44,7 +49,7 @@ function drawImage() {
 
   ctx.save();
 
-  ctx.scale(scale.value, scale.value);
+  //ctx.scale(scale.value, scale.value);
 
   ctx.drawImage(image, imageXPos, imageYPos, imageWidth, imageHeight);
 
@@ -55,6 +60,92 @@ function drawImage() {
 
   ctx.restore();
 }
+
+function drawGrid(){
+  ctx.save();
+
+  let numOfLinesWidth =  pixelsTo(gridSize.value, canvasWidth.value);
+  let numOfLinesHeight =  pixelsTo(gridSize.value, canvasHeight.value);
+
+  // Draw Horizontal Grid lines
+  for (let i = 1; i < numOfLinesWidth; i++) { 
+    // drawLine(position-X, position-Y, Width, Height, Color);
+    // Divide the width of the canvas by the number of lines 
+    // Then multiply it by which line it is on the grid
+    drawLine((canvasWidth.value / numOfLinesWidth) * i, 0, gridWidth.value, canvasHeight.value, gridColor.value); 
+  }
+
+  // Draw Vertical Grid lines
+  for (let i = 1; i < numOfLinesHeight; i++) {
+    drawLine(0, (canvasHeight.value / numOfLinesHeight) * i, canvasWidth.value, gridWidth.value, gridColor.value);
+  }
+
+  ctx.restore();
+}
+
+function drawLine(x, y, w, h, color){    
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.rect(x, y, w, h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function pixelsTo(conversion, px){
+  let retunValue;
+
+switch(conversion) {
+  case "1":
+  retunValue = 96; // 1"
+    break;
+    case "1/2":
+  retunValue = 48; // 1/2"
+    break;
+    case "1/3":
+  retunValue = 32; // 1/3"
+    break;
+    case "1/4":
+  retunValue = 24; // 1/4"
+    break;
+    case "1/8":
+  retunValue = 12; // 1/8"
+    break;
+    case "1/16":
+  retunValue = 6; // 1/16"
+    break;
+
+  default:
+  retunValue = 96; // 1"
+} 
+
+return px / retunValue;
+}
+
+function hexToRgb(hex) {
+  // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+    return r + r + g + g + b + b;
+  });
+
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+
+function changeGridColor(hexNum, opacity){
+  
+  let RGB = hexToRgb(hexNum);
+  let alpha = opacity // Convert
+
+  return "rgba(" + RGB.r + "," + RGB.g + "," + RGB.a + "," + alpha + ")";
+}
+
+
+
 
 async function resizeCanvas() {
   await nextTick();
@@ -90,6 +181,7 @@ function onMouseMove(e) {
     imageYPos = imageYPos + dy;
 
     drawImage();
+    drawGrid();
   }
 }
 
@@ -124,7 +216,17 @@ function onSlider(e) {
   console.log(scale.value);
   
   drawImage();
+  drawGrid();
 }
+
+function onChangeColor(color) {
+
+
+
+
+}
+
+
 </script>
 
 <template>
