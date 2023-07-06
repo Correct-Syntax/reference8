@@ -9,7 +9,7 @@ var canvasWidth = ref(500);
 var canvasHeight = ref(500);
 var gridWidth = ref(1);
 var gridColorHex = ref("#ffffff");
-var gridOpacity = ref(100);
+var gridOpacity = ref(40);
 var gridSize = ref("1/3");
 var image = new Image();
 var imageXPos = 0;
@@ -54,11 +54,6 @@ function drawImage() {
 
   ctx.drawImage(image, imageXPos, imageYPos, imageWidth, imageHeight);
 
-  ctx.beginPath();
-  ctx.strokeStyle = "red"
-  ctx.rect(0, 0, canvasWidth.value, canvasHeight.value);
-  ctx.stroke();
-
   ctx.restore();
 }
 
@@ -82,6 +77,13 @@ function drawGrid(){
   for (let i = 1; i < numOfLinesHeight; i++) {
     drawLine(0, (canvasHeight.value / numOfLinesHeight) * i, canvasWidth.value, gridWidth.value, color);
   }
+
+  // Draw border
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1; 
+  ctx.rect(1, 1, canvasWidth.value-1, canvasHeight.value-1);
+  ctx.stroke();
 
   ctx.restore();
 }
@@ -214,38 +216,37 @@ function isCursorOverImage(x, y) {
         && (y - canvas.value.offsetTop) > imageYPos && (y - canvas.value.offsetTop) < imageYPos + imageHeight;
 }
 
-function onSlider(e) {
-  scale.value = (e.currentTarget.value * 0.1);
-  console.log(scale.value);
-  
+function onChangeColor(e) {
+  gridColorHex.value = e.currentTarget.value;
   drawImage();
   drawGrid();
 }
 
-function onChangeColor(color) {
-
-//  gridColorHex
-
+function onChangeOpacity(e) {
+  gridOpacity.value = e.currentTarget.value;
+  drawImage();
+  drawGrid();
 }
-
-function onChangeOpacity(color) {
-
-//gridOpacity
-
-}
-
-
 </script>
 
 <template>
-  <main class="">
+  <main class="w-full h-screen">
 
-    <div ref="container" class="flex flex-stretch flex-row w-100 h-100">
-      <div class="flex flex-row w-100 h-100">
-        <div class="w-1/4 py-10 px-2">
-          <input ref="slider" type="range" min="1" max="10" value="500" class="slider" @input="onSlider">
+    <div  class="flex flex-stretch flex-row w-full h-full">
+      <div class="flex flex-row flex-grow flex-stretch p-4 w-full h-full">
+        <!-- Sidebar -->
+        <div class="flex flex-col flex-grow bg-dark-700 w-1/5 py-4 px-5 rounded-md mt-8">
+          <p class="text-white uppercase font-medium mb-3">Grid</p>
+          <div class="inline-flex items-center bg-dark-900 text-gray-300 px-2 py-1 rounded-md">
+            <input class="w-5 h-5 bg-white rounded-md border-none" type="color" :value="gridColorHex" @input="onChangeColor">
+            <span class="ml-2">{{gridColorHex}}</span>
+          </div>
+          <input ref="slider" type="range" min="1" max="100" :value="gridOpacity" class="mt-3" @input="onChangeOpacity">
         </div>
-        <canvas ref="canvas" :width="canvasWidth" :height="canvasHeight" @mousedown="onMouseDown" @mousemove="onMouseMove" @mouseup="onMouseUp"></canvas>
+        <!-- Canvas -->
+        <div ref="container" class="w-4/5 ml-4">
+          <canvas ref="canvas" :width="canvasWidth" :height="canvasHeight" @mousedown="onMouseDown" @mousemove="onMouseMove" @mouseup="onMouseUp"></canvas>
+        </div>
 
       </div>
     </div>
