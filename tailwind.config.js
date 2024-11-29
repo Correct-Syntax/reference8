@@ -1,23 +1,19 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    fontFamily: {
-      sans: ['Inter', 'sans-serif'],
-    },  
     extend: {
       colors: {
-        dark: {
-          700: "#24272C",
-          800: "#15191C",
-          900: "#0B0C0D",
-        }
-      }
+        accent: "#DADD15",
+        gray: "#C2C2C2",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+      },
     },
   },
   plugins: [],
-}
-
+};
