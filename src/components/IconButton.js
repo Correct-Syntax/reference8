@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function IconButton({children}) {
+export default function IconButton({ children, onClick }) {
     return (
-    <button className="p-1 transition-colors duration-300 ease-in-out text-gray hover:text-white">
-        {children}
-    </button>
+        <button onClick={onClick} className="p-0.5 transition-colors duration-300 ease-in-out text-gray hover:text-white">
+            {children}
+        </button>
     );
 }
