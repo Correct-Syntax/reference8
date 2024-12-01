@@ -19,3 +19,15 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.slider:focus {
+  outline: none;
+  box-shadow: 0px 0px 15px 5px #0000001e;
+}
+
+.slider img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 48px);
+}
