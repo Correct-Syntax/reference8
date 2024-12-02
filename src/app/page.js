@@ -21,6 +21,20 @@ import ImageCanvas from "@/components/ImageCanvas";
 import { useState } from 'react';
 import UploadArea from "@/components/UploadArea";
 
+const gridModesConst = [
+  { id: 0, name: 'None', icon: ViewNoneIcon, },
+  { id: 1, name: 'Vertical', icon: ViewVerticalIcon, },
+  { id: 2, name: 'Horizontal', icon: ViewHorizontalIcon, },
+  { id: 3, name: 'Grid', icon: ViewGridIcon, },
+];
+
+const imageFiltersConst = [
+  { id: 0, name: 'Original', },
+  { id: 1, name: 'Grayscale', },
+  { id: 2, name: 'Posterize', },
+];
+
+
 
 export default function Home() {
   const [fullscreen, setFullscreen] = useState(false);
@@ -34,18 +48,9 @@ export default function Home() {
   const [gridModeMenuOpen, setGridModeMenuOpen] = useState(false);
   const [imageFiltersMenuOpen, setImageFiltersMenuOpen] = useState(false);
 
-  const gridModesConst = [
-    { id: 0, name: 'None', icon: ViewNoneIcon, },
-    { id: 1, name: 'Vertical', icon: ViewVerticalIcon, },
-    { id: 2, name: 'Horizontal', icon: ViewHorizontalIcon, },
-    { id: 3, name: 'Grid', icon: ViewGridIcon, },
-  ];
+  const [file, setFile] = useState(null);
+  const [fileIsValid, setFileIsValid] = useState(null);
 
-  const imageFiltersConst = [
-    { id: 0, name: 'Original', },
-    { id: 1, name: 'Grayscale', },
-    { id: 2, name: 'Posterize', },
-  ];
 
   function handleSetGridMode(id) {
     setGridMode(id);
@@ -84,9 +89,20 @@ export default function Home() {
     setFullscreen(!fullscreen);
   }
 
+  function handleFileUpload(e) {
+    console.log(e.target.files);
+    var uploadedFile = e.target.files[0];
+    if (/\.(jpe?g|png)$/i.test(uploadedFile.name) === true) {
+      setFileIsValid(true);
+      setFile(URL.createObjectURL(uploadedFile));
+    } else {
+      setFileIsValid(false);
+    }
+  }
+
   return (
     <div className="flex flex-col">
-      <nav className="flex flex-row justify-between items-center px-5 py-3 bg-foreground">
+      <nav className="flex z-50 flex-row justify-between items-center px-5 py-3 bg-foreground">
         <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex space-x-2 group hover:cursor-pointer">
           <Image
             src="/logo-icon.png"
@@ -124,8 +140,8 @@ export default function Home() {
       </nav>
 
       <main className="flex justify-center items-center p-4">
-        <UploadArea></UploadArea>
-        {/* <ImageCanvas></ImageCanvas> */}
+        {file == null ? <UploadArea file={file} fileIsValid={fileIsValid} onFileUpload={handleFileUpload}></UploadArea> :
+          <ImageCanvas file={file}></ImageCanvas>}
       </main>
     </div>
   );

@@ -1,24 +1,23 @@
 import {
+    ExclamationTriangleIcon,
     ImageIcon,
     UploadIcon,
 } from "@radix-ui/react-icons";
-import PrimaryTextIconButton from "@/components/PrimaryTextIconButton";
 
-export default function UploadArea() {
+export default function UploadArea({ file, fileIsValid, onFileUpload }) {
     return (
-        <div id="uploadArea" className="flex justify-center p-5 mx-2 group bg-foreground outline-dashed outline-gray/30 outline-2 outline-offset-2">
-            <div className="flex flex-col justify-center text-center">
-                <ImageIcon className="mx-auto w-16 h-16 transition duration-300 ease-in-out rotate-3 group-hover:rotate-6 text-gray"></ImageIcon>
-                <h2 className="mt-4 text-4xl font-bold text-gray">Drop a photo to upload.</h2>
-                <h3 className="my-3 text-lg font-bold text-gray/50">or</h3>
-                <div className="mx-auto">
-                    <PrimaryTextIconButton text="Select file to upload" Icon={UploadIcon}></PrimaryTextIconButton>
-                </div>
+        <div id="uploadArea" className="flex justify-center p-5 mx-2 transition duration-300 ease-in-out cursor-pointer group bg-foreground hover:bg-foreground/90 outline-dashed outline-gray/30 hover:outline-gray/40 outline-2 outline-offset-2">
+            <label htmlFor="dropzone" className="flex flex-col justify-center text-center cursor-pointer">
+                <UploadIcon className="mx-auto w-12 h-12 transition duration-300 ease-in-out rotate-3 group-hover:rotate-0 text-gray"></UploadIcon>
+                <h2 className="mt-4 text-2xl font-bold text-gray">Click to upload or drag and drop</h2>
+                <h3 className="my-3 text-base font-bold text-gray/50">JPG, JPEG, or PNG file</h3>
 
-
-            </div>
-
-
+                {fileIsValid == false && <div className="flex flex-row items-center mx-auto mt-3 space-x-2">
+                    <ExclamationTriangleIcon className="w-4 h-4 text-red-300" />
+                    <p className="text-sm text-red-300">Must be a JPG, JPEG, or PNG file.</p>
+                </div>}
+                <input id="dropzone" type="file" className="hidden" onChange={onFileUpload} accept="image/x-png,image/jpeg" />
+            </label>
         </div>
     );
 }
