@@ -15,7 +15,7 @@ export default function ImageFiltersDropDownMenu({ items, selected, onClick }) {
     return (
         <div className="z-50 absolute -left-14 top-10 py-4 px-2 w-[9.7rem] text-[11pt] rounded-lg bg-foreground shadow-2xl">
             <ul className="space-y-4">{listItems}</ul>
-            <p className="mt-3 text-[9pt] text-center text-gray/50">Select up to 2 at a time.</p>
+            <p className="mt-3 text-[9pt] text-center text-gray/60">Select up to 2 at a time.</p>
         </div>
     );
 }
