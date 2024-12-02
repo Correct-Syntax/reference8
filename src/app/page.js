@@ -39,9 +39,9 @@ const gridModesConst = [
 ];
 
 const imageFiltersConst = [
-  { id: 0, name: "Original", },
-  { id: 1, name: "Grayscale", },
-  { id: 2, name: "High Contrast", },
+  { id: 0, name: "Original", thumbnail: "/original.jpg", },
+  { id: 1, name: "Grayscale", thumbnail: "/grayscale.jpg", },
+  { id: 2, name: "High Contrast", thumbnail: "high-contrast.jpg", },
 ];
 
 
@@ -103,7 +103,7 @@ export default function Home() {
       setFileIsValid(true);
       setFile(URL.createObjectURL(uploadedFile));
     } else {
-      setFileIsValid(false); s
+      setFileIsValid(false);
     }
   }
 
