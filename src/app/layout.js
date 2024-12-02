@@ -8,8 +8,8 @@ const albertSans = localFont({
 });
 
 export const metadata = {
-  title: "Artist reference tool - Reference8",
-  description: "",
+  title: "Reference8 - Photo reference tool",
+  description: "Web-based photo reference tool for artists and creatives",
 };
 
 export default function RootLayout({ children }) {
