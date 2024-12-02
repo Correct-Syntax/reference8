@@ -47,7 +47,7 @@ const imageFiltersConst = [
 
 
 export default function Home() {
-  const [fullscreenRef, toggleFullscreen, isFullscreen] = useFullscreen();;
+  const [fullscreenRef, toggleFullscreen, isFullscreen] = useFullscreen();
 
   const [darkMode, setDarkMode] = useState(true);
 

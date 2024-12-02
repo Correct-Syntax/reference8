@@ -1,6 +1,5 @@
 import {
     ExclamationTriangleIcon,
-    ImageIcon,
     UploadIcon,
 } from "@radix-ui/react-icons";
 

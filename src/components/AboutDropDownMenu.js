@@ -4,10 +4,13 @@ function handleAboutMenuItemsOnClick(id) {
     switch (id) {
         case 0:
             sendFeedback();
+            break;
         case 1:
             visitWebsite();
+            break;
         case 2:
             visitGitHubRepository();
+            break;
     }
 }
 
