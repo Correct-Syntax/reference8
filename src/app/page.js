@@ -31,7 +31,7 @@ const gridModesConst = [
 const imageFiltersConst = [
   { id: 0, name: 'Original', },
   { id: 1, name: 'Grayscale', },
-  { id: 2, name: 'Posterize', },
+  { id: 2, name: 'High Contrast', },
 ];
 
 
@@ -141,7 +141,7 @@ export default function Home() {
 
       <main className="flex justify-center items-center p-4">
         {file == null ? <UploadArea file={file} fileIsValid={fileIsValid} onFileUpload={handleFileUpload}></UploadArea> :
-          <ImageCanvas file={file}></ImageCanvas>}
+          <ImageCanvas file={file} imageFilters={imageFilters}></ImageCanvas>}
       </main>
     </div>
   );
