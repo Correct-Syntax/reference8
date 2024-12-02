@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import {
   SunIcon,
@@ -15,12 +16,12 @@ import {
   GlobeIcon,
   GitHubLogoIcon,
 } from "@radix-ui/react-icons";
+import useFullscreen from "@/hooks/FullscreenHook";
 import IconDropDownButton from "@/components/IconDropDownButton";
 import DropDownMenu from "@/components/DropDownMenu";
 import ImageFiltersDropDownMenu from "@/components/ImageFiltersDropDownMenu";
 import IconButton from "@/components/IconButton";
 import ImageCanvas from "@/components/ImageCanvas";
-import { useState } from "react";
 import UploadArea from "@/components/UploadArea";
 import AboutDropDownMenu from "@/components/AboutDropDownMenu";
 
@@ -46,7 +47,8 @@ const imageFiltersConst = [
 
 
 export default function Home() {
-  const [fullscreen, setFullscreen] = useState(false);
+  const [fullscreenRef, toggleFullscreen, isFullscreen] = useFullscreen();;
+
   const [darkMode, setDarkMode] = useState(true);
 
   const [aboutMenuOpen, setAboutMenuOpen] = useState(false);
@@ -59,7 +61,6 @@ export default function Home() {
 
   const [file, setFile] = useState(null);
   const [fileIsValid, setFileIsValid] = useState(null);
-
 
   function handleSetGridMode(id) {
     setGridMode(id);
@@ -85,15 +86,10 @@ export default function Home() {
       }
     });
     setImageFilters(nextImageFilters);
-    //setImageFiltersMenuOpen(false);
   }
 
   function handleSetToggleDarkMode() {
     setDarkMode(!darkMode);
-  }
-
-  function handleSetToggleFullscreen() {
-    setFullscreen(!fullscreen);
   }
 
   function handleFileUpload(e) {
@@ -108,7 +104,7 @@ export default function Home() {
   }
 
   return (
-    <div className={`flex flex-col ${darkMode == true ? "dark bg-background" : "bg-foreground/10"}`}>
+    <div ref={fullscreenRef} className={`flex flex-col ${darkMode == true ? "dark bg-background" : "bg-foreground/10"}`}>
       <nav className="flex z-50 flex-row justify-between items-center px-5 py-3 bg-foreground">
         <div className="flex relative justify-center items-center">
           <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex space-x-2 group hover:cursor-pointer">
@@ -120,18 +116,17 @@ export default function Home() {
               priority
             />
             <span className={`font-bold transition-colors duration-300 ease-in-out group-hover:text-white ${aboutMenuOpen == true ? "text-accent" : "text-gray"}`}>Reference8</span>
-            <span className="flex items-center px-1 py-[0.5px] h-min text-[9px] font-semibold rounded-full bg-accent text-foreground">beta</span>
           </div>
           {aboutMenuOpen && <AboutDropDownMenu items={aboutMenuItemsConst}></AboutDropDownMenu>}
         </div>
 
         <div className="flex flex-row space-x-4">
-          <div className="relative">
+          <div className="flex relative">
             <IconDropDownButton Icon={ShadowInnerIcon} active={imageFiltersMenuOpen} onClick={() => setImageFiltersMenuOpen(!imageFiltersMenuOpen)}>
             </IconDropDownButton>
             {imageFiltersMenuOpen && <ImageFiltersDropDownMenu items={imageFiltersConst} selected={imageFilters} onClick={handleSetImageFilters}></ImageFiltersDropDownMenu>}
           </div>
-          <div className="relative">
+          <div className="flex relative">
             <IconDropDownButton Icon={gridModesConst[gridMode].icon} active={gridModeMenuOpen} onClick={() => setGridModeMenuOpen(!gridModeMenuOpen)}>
             </IconDropDownButton>
             {gridModeMenuOpen && <DropDownMenu items={gridModesConst} selected={gridMode} onClick={handleSetGridMode}></DropDownMenu>}
@@ -143,8 +138,8 @@ export default function Home() {
           <IconButton onClick={handleSetToggleDarkMode}>
             {darkMode ? <SunIcon className="w-5 h-5"></SunIcon> : <MoonIcon className="w-5 h-5"></MoonIcon>}
           </IconButton>
-          <IconButton onClick={handleSetToggleFullscreen}>
-            {fullscreen ? <ExitFullScreenIcon className="w-5 h-5"></ExitFullScreenIcon> : <EnterFullScreenIcon className="w-5 h-5"></EnterFullScreenIcon>}
+          <IconButton onClick={toggleFullscreen}>
+            {isFullscreen ? <ExitFullScreenIcon className="w-5 h-5"></ExitFullScreenIcon> : <EnterFullScreenIcon className="w-5 h-5"></EnterFullScreenIcon>}
           </IconButton>
         </div>
       </nav>

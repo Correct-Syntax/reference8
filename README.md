@@ -5,9 +5,8 @@ Web-based photo reference tool for artists and creatives.
 Created with React, Next.js, and TailwindCSS.
 
 
-## Todo (for the beta)
+## Todo
 
-- [ ] Fullscreen toggle.
 - [ ] Ensure that drag and drop is working.
 
 
