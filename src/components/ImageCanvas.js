@@ -38,11 +38,11 @@ export default function ImageCanvas({ file, imageFilters, gridMode }) {
     }
     var showSlider = imageFilters.filter(i => i == true).length > 1;
     return (
-        <div id="imageCanvas" className={`grid-overlay relative w-auto ${gridClassesFromId(gridMode)} ${showSlider ? "mt-[0.35rem]" : ""}`}>
-            <div id="horizontalTop" class="absolute z-40 w-full h-[1px] bg-white/50"></div>
-            <div id="horizontalBottom" class="absolute z-40 w-full h-[1px] bg-white/50"></div>
-            <div id="verticalLeft" class="absolute z-40 w-[1px] h-full bg-white/50"></div>
-            <div id="verticalRight" class="absolute z-40 w-[1px] h-full bg-white/50"></div>
+        <div id="imageCanvas" className={`relative w-auto grid-overlay ${gridClassesFromId(gridMode)}`}>
+            <div id="horizontalTop" className="absolute z-40 w-full h-[1px] bg-white/50"></div>
+            <div id="horizontalBottom" className="absolute z-40 w-full h-[1px] bg-white/50"></div>
+            <div id="verticalLeft" className="absolute z-40 w-[1px] h-full bg-white/50"></div>
+            <div id="verticalRight" className="absolute z-40 w-[1px] h-full bg-white/50"></div>
 
             {showSlider ?
                 <ImgComparisonSlider>
