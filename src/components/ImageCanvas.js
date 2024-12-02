@@ -1,8 +1,8 @@
 "use client";
 
-import { ImgComparisonSlider } from '@img-comparison-slider/react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
-import { responseCookiesToRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
+import { ImgComparisonSlider } from "@img-comparison-slider/react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+
 
 function filterClassFromId(filterId) {
     switch (filterId) {

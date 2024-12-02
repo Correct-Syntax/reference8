@@ -11,29 +11,38 @@ import {
   ShadowInnerIcon,
   ExitFullScreenIcon,
   MoonIcon,
-  UploadIcon,
+  EnvelopeOpenIcon,
+  GlobeIcon,
+  GitHubLogoIcon,
 } from "@radix-ui/react-icons";
 import IconDropDownButton from "@/components/IconDropDownButton";
 import DropDownMenu from "@/components/DropDownMenu";
 import ImageFiltersDropDownMenu from "@/components/ImageFiltersDropDownMenu";
 import IconButton from "@/components/IconButton";
 import ImageCanvas from "@/components/ImageCanvas";
-import { useState } from 'react';
+import { useState } from "react";
 import UploadArea from "@/components/UploadArea";
+import AboutDropDownMenu from "@/components/AboutDropDownMenu";
+
+
+const aboutMenuItemsConst = [
+  { id: 0, name: "Send Feedback", icon: EnvelopeOpenIcon, },
+  { id: 1, name: "Visit Website", icon: GlobeIcon, },
+  { id: 2, name: "GitHub Repository", icon: GitHubLogoIcon, },
+];
 
 const gridModesConst = [
-  { id: 0, name: 'None', icon: ViewNoneIcon, },
-  { id: 1, name: 'Vertical', icon: ViewVerticalIcon, },
-  { id: 2, name: 'Horizontal', icon: ViewHorizontalIcon, },
-  { id: 3, name: 'Grid', icon: ViewGridIcon, },
+  { id: 0, name: "None", icon: ViewNoneIcon, },
+  { id: 1, name: "Vertical", icon: ViewVerticalIcon, },
+  { id: 2, name: "Horizontal", icon: ViewHorizontalIcon, },
+  { id: 3, name: "Grid", icon: ViewGridIcon, },
 ];
 
 const imageFiltersConst = [
-  { id: 0, name: 'Original', },
-  { id: 1, name: 'Grayscale', },
-  { id: 2, name: 'High Contrast', },
+  { id: 0, name: "Original", },
+  { id: 1, name: "Grayscale", },
+  { id: 2, name: "High Contrast", },
 ];
-
 
 
 export default function Home() {
@@ -103,15 +112,19 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <nav className="flex z-50 flex-row justify-between items-center px-5 py-3 bg-foreground">
-        <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex space-x-2 group hover:cursor-pointer">
-          <Image
-            src="/logo-icon.png"
-            alt="Logo"
-            width={22}
-            height={22}
-            priority
-          />
-          <span className="font-bold transition-colors duration-300 ease-in-out text-gray group-hover:text-white">Reference8</span>
+        <div className="flex relative justify-center items-center">
+          <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex space-x-2 group hover:cursor-pointer">
+            <Image
+              src="/logo-icon.png"
+              alt="Logo"
+              width={22}
+              height={22}
+              priority
+            />
+            <span className={`font-bold transition-colors duration-300 ease-in-out group-hover:text-white ${aboutMenuOpen == true ? "text-accent" : "text-gray"}`}>Reference8</span>
+            <span className="flex items-center px-1 py-[0.5px] h-min text-[9px] font-semibold rounded-full bg-accent text-foreground">beta</span>
+          </div>
+          {aboutMenuOpen && <AboutDropDownMenu items={aboutMenuItemsConst}></AboutDropDownMenu>}
         </div>
 
 
