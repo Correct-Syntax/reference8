@@ -47,7 +47,7 @@ const imageFiltersConst = [
 
 export default function Home() {
   const [fullscreen, setFullscreen] = useState(false);
-  const [darkTheme, setDarkTheme] = useState(true);
+  const [darkMode, setDarkMode] = useState(true);
 
   const [aboutMenuOpen, setAboutMenuOpen] = useState(false);
 
@@ -88,10 +88,8 @@ export default function Home() {
     //setImageFiltersMenuOpen(false);
   }
 
-  function handleSetToggleDarkTheme() {
-
-
-    setDarkTheme(!darkTheme);
+  function handleSetToggleDarkMode() {
+    setDarkMode(!darkMode);
   }
 
   function handleSetToggleFullscreen() {
@@ -105,12 +103,12 @@ export default function Home() {
       setFileIsValid(true);
       setFile(URL.createObjectURL(uploadedFile));
     } else {
-      setFileIsValid(false);
+      setFileIsValid(false); s
     }
   }
 
   return (
-    <div className="flex flex-col">
+    <div className={`flex flex-col h-full ${darkMode == true ? "dark bg-background" : ""}`}>
       <nav className="flex z-50 flex-row justify-between items-center px-5 py-3 bg-foreground">
         <div className="flex relative justify-center items-center">
           <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex space-x-2 group hover:cursor-pointer">
@@ -127,7 +125,6 @@ export default function Home() {
           {aboutMenuOpen && <AboutDropDownMenu items={aboutMenuItemsConst}></AboutDropDownMenu>}
         </div>
 
-
         <div className="flex flex-row space-x-4">
           <div className="relative">
             <IconDropDownButton Icon={ShadowInnerIcon} active={imageFiltersMenuOpen} onClick={() => setImageFiltersMenuOpen(!imageFiltersMenuOpen)}>
@@ -143,8 +140,8 @@ export default function Home() {
 
         <div className="flex flex-row space-x-4">
           <hr className="border-white" />
-          <IconButton onClick={handleSetToggleDarkTheme}>
-            {darkTheme ? <SunIcon className="w-5 h-5"></SunIcon> : <MoonIcon className="w-5 h-5"></MoonIcon>}
+          <IconButton onClick={handleSetToggleDarkMode}>
+            {darkMode ? <SunIcon className="w-5 h-5"></SunIcon> : <MoonIcon className="w-5 h-5"></MoonIcon>}
           </IconButton>
           <IconButton onClick={handleSetToggleFullscreen}>
             {fullscreen ? <ExitFullScreenIcon className="w-5 h-5"></ExitFullScreenIcon> : <EnterFullScreenIcon className="w-5 h-5"></EnterFullScreenIcon>}

@@ -2,21 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #15191C;
-    --foreground: #0B0C0D;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: "albertSans", Arial, Helvetica, sans-serif;
 }
 
@@ -30,10 +16,6 @@ body {
   height: auto;
   max-width: 100%;
   max-height: calc(100vh - 48px);
-}
-
-main {
-  height: 90vh;
 }
 
 #uploadArea {
