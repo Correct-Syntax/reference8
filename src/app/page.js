@@ -108,7 +108,7 @@ export default function Home() {
   }
 
   return (
-    <div className={`flex flex-col ${darkMode == true ? "dark bg-background" : ""}`}>
+    <div className={`flex flex-col ${darkMode == true ? "dark bg-background" : "bg-foreground/10"}`}>
       <nav className="flex z-50 flex-row justify-between items-center px-5 py-3 bg-foreground">
         <div className="flex relative justify-center items-center">
           <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex space-x-2 group hover:cursor-pointer">
