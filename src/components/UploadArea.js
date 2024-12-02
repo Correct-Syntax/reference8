@@ -4,9 +4,9 @@ import {
     UploadIcon,
 } from "@radix-ui/react-icons";
 
-export default function UploadArea({ file, fileIsValid, onFileUpload }) {
+export default function UploadArea({ fileIsValid, onFileUpload }) {
     return (
-        <div id="uploadArea" className="flex justify-center p-5 mx-2 transition duration-300 ease-in-out cursor-pointer group bg-foreground hover:bg-foreground/90 outline-dashed outline-gray/30 hover:outline-gray/40 outline-2 outline-offset-2">
+        <div id="uploadArea" className="flex justify-center mx-5 transition duration-300 ease-in-out cursor-pointer group bg-foreground hover:bg-foreground/90 outline-dashed outline-gray/30 hover:outline-gray/40 outline-2 outline-offset-2">
             <label htmlFor="dropzone" className="flex flex-col justify-center text-center cursor-pointer">
                 <UploadIcon className="mx-auto w-12 h-12 transition duration-300 ease-in-out rotate-3 group-hover:rotate-0 text-gray"></UploadIcon>
                 <h2 className="mt-4 text-2xl font-bold text-gray">Click to upload or drag and drop</h2>

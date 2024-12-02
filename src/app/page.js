@@ -108,7 +108,7 @@ export default function Home() {
   }
 
   return (
-    <div className={`flex flex-col h-full ${darkMode == true ? "dark bg-background" : ""}`}>
+    <div className={`flex flex-col ${darkMode == true ? "dark bg-background" : ""}`}>
       <nav className="flex z-50 flex-row justify-between items-center px-5 py-3 bg-foreground">
         <div className="flex relative justify-center items-center">
           <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex space-x-2 group hover:cursor-pointer">
@@ -149,8 +149,8 @@ export default function Home() {
         </div>
       </nav>
 
-      <main className="flex justify-center items-center p-4">
-        {file == null ? <UploadArea file={file} fileIsValid={fileIsValid} onFileUpload={handleFileUpload}></UploadArea> :
+      <main id="main" className="flex justify-center items-center py-6">
+        {file == null ? <UploadArea fileIsValid={fileIsValid} onFileUpload={handleFileUpload}></UploadArea> :
           <ImageCanvas file={file} imageFilters={imageFilters} gridMode={gridMode}></ImageCanvas>}
       </main>
     </div>

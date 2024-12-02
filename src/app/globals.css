@@ -11,6 +11,11 @@ body {
   box-shadow: 0px 0px 15px 5px #0000001e;
 }
 
+#main {
+  width: auto;
+  height: calc(100vh - 48px);
+}
+
 #imageCanvas img {
   width: auto;
   height: auto;
