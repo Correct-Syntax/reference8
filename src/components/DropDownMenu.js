@@ -8,7 +8,7 @@ export default function DropDownMenu({ items, selected, onClick }) {
         </li>
     );
     return (
-        <div className="absolute right-1 top-10 p-2 w-52 text-[11pt] rounded-lg bg-foreground">
+        <div className="z-50 absolute -left-20 top-10 p-2 w-52 text-[11pt] rounded-lg bg-foreground shadow-2xl">
             <ul className="space-y-1">{listItems}</ul>
         </div>
     );

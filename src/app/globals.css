@@ -50,3 +50,66 @@ main {
 .high-contrast {
   filter: contrast(140%);
 }
+
+.grid-overlay {
+  max-height: calc(100vh - 48px);
+}
+
+/* None */
+.grid-none #horizontalTop,
+.grid-none #horizontalBottom,
+.grid-none #verticalLeft,
+.grid-none #verticalRight {
+  display: none;
+}
+
+/* Vertical */
+.grid-vertical #horizontalTop {
+  display: none;
+}
+
+.grid-vertical #horizontalBottom {
+  display: none;
+}
+
+.grid-vertical #verticalLeft {
+  left: 33.33%;
+}
+
+.grid-vertical #verticalRight {
+  left: 66.66%;
+}
+
+/* Horizontal */
+.grid-horizontal #horizontalTop {
+  top: 33.33%;
+}
+
+.grid-horizontal #horizontalBottom {
+  top: 66.66%;
+}
+
+.grid-horizontal #verticalLeft {
+  display: none;
+}
+
+.grid-horizontal #verticalRight {
+  display: none;
+}
+
+/* Thirds */
+.grid-thirds #horizontalTop {
+  top: 33.33%;
+}
+
+.grid-thirds #horizontalBottom {
+  top: 66.66%;
+}
+
+.grid-thirds #verticalLeft {
+  left: 33.33%;
+}
+
+.grid-thirds #verticalRight {
+  left: 66.66%;
+}

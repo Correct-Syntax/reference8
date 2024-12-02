@@ -141,7 +141,7 @@ export default function Home() {
 
       <main className="flex justify-center items-center p-4">
         {file == null ? <UploadArea file={file} fileIsValid={fileIsValid} onFileUpload={handleFileUpload}></UploadArea> :
-          <ImageCanvas file={file} imageFilters={imageFilters}></ImageCanvas>}
+          <ImageCanvas file={file} imageFilters={imageFilters} gridMode={gridMode}></ImageCanvas>}
       </main>
     </div>
   );
