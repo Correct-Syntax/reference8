@@ -38,7 +38,7 @@ export default function AboutDropDownMenu({ items }) {
     return (
         <div className="z-50 absolute -left-1 top-10 p-2 w-52 text-[11pt] rounded-lg bg-foreground shadow-2xl">
             <ul className="mb-1 space-y-1">{listItems}</ul>
-            <small className="relative px-3 text-xs text-gray/70">Reference8 v0.1.0 build 1</small>
+            <small className="relative px-3 text-xs text-gray/70">Reference8 v0.2.0 build 2</small>
         </div>
     );
 }

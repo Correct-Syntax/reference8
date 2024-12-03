@@ -101,7 +101,7 @@ export default function Home() {
     event.preventDefault();
     const droppedFiles = event.dataTransfer.files;
     setNewFile(droppedFiles[0]);
-  };
+  }
 
   function setNewFile(file) {
     if (/\.(jpe?g|png)$/i.test(file.name) === true) {
