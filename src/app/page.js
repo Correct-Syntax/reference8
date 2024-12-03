@@ -114,11 +114,11 @@ export default function Home() {
 
   return (
     <div ref={fullscreenRef} className={`flex flex-col ${darkMode == true ? "dark bg-background" : "bg-foreground/10"}`}>
-      <nav className={`flex z-50 flex-row justify-between items-center px-5 py-3 ${isFullscreen ? "absolute top-1 left-1 w-full rounded-lg bg-foreground/40 md:w-1/4" : "bg-foreground"}`}>
+      <nav className={`flex z-50 flex-row justify-between items-center px-5 py-3 ${isFullscreen ? "absolute top-1 left-1 w-full rounded-lg bg-foreground/40 lg:w-1/3 xl:w-1/4" : "bg-foreground"}`}>
         <div className="flex relative justify-center items-center">
-          <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex space-x-2 group hover:cursor-pointer">
+          <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex items-center space-x-2 group hover:cursor-pointer">
             <Image
-              className={`${isFullscreen ? "opacity-70" : ""}`}
+              className={`h-min ${isFullscreen ? "opacity-70" : ""}`}
               src="/logo-icon.png"
               alt="Logo"
               width={22}
@@ -148,7 +148,7 @@ export default function Home() {
           <IconButton onClick={handleSetToggleDarkMode}>
             {darkMode ? <SunIcon className="w-5 h-5"></SunIcon> : <MoonIcon className="w-5 h-5"></MoonIcon>}
           </IconButton>
-          <IconButton onClick={toggleFullscreen}>
+          <IconButton disabled={fileIsValid !== true} onClick={toggleFullscreen}>
             {isFullscreen ? <ExitFullScreenIcon className="w-5 h-5"></ExitFullScreenIcon> : <EnterFullScreenIcon className="w-5 h-5"></EnterFullScreenIcon>}
           </IconButton>
         </div>
