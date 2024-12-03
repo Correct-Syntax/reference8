@@ -37,9 +37,9 @@ Then open [http://localhost:3000](http://localhost:3000) with your browser to se
 
 ### Contributing
 
-Reference8 is React + Next.js project using TailwindCSS for styling. The project doesn't currently use Typescript. 
+Reference8 is React + Next.js project using TailwindCSS for styling. The project (currently) uses plain Javascript modules rather than Typescript. 
 
-Contributions are welcome. You can open and issue or get it contact with me at hi@noahrahm.com.
+Contributions are welcome. You can open an issue, or get it contact with me at hi@noahrahm.com.
 
 
 ## License
