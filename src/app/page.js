@@ -93,7 +93,6 @@ export default function Home() {
   }
 
   function handleFileUpload(e) {
-    console.log(e.target.files);
     var uploadedFile = e.target.files[0];
     if (/\.(jpe?g|png)$/i.test(uploadedFile.name) === true) {
       setFileIsValid(true);
