@@ -1,13 +1,27 @@
 # Reference8
 
-Web-based photo reference tool for artists and creatives.
+[![Reference8](/.readme/reference8-banner.png)](https://reference8.com)
 
-Created with React, Next.js, and TailwindCSS.
+Web-based photo reference tool for artists and creatives. 
+
+Launch the latest build of [Reference8](https://reference8.com) in your browser.
 
 
-## Todo
+## Status/Todo
+
+It is functional. The basics are here, but there are various improvements that can be made.
 
 - [ ] Ensure that drag and drop is working.
+- [ ] Menus should close without user needing to manually close them.
+
+If you'd like to help out, please take a look at the Contributing section below.
+
+
+## Installing
+
+```bash
+npm install
+```
 
 
 ## Running the code
@@ -19,6 +33,13 @@ npm run dev
 ```
 
 Then open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+
+### Contributing
+
+Reference8 is React + Next.js project using TailwindCSS for styling. The project doesn't currently use Typescript. 
+
+Contributions are welcome. You can open and issue or get it contact with me at hi@noahrahm.com.
 
 
 ## License
