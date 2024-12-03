@@ -9,9 +9,6 @@ Launch the latest build of [Reference8](https://reference8.com) in your browser.
 
 ## Status/Todo
 
-It is functional. The basics are here, but there are various improvements that can be made.
-
-- [ ] Ensure that drag and drop is working.
 - [ ] Menus should close without user needing to manually close them.
 - [ ] Add other filters: blur, etc.
 
