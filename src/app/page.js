@@ -156,7 +156,7 @@ export default function Home() {
 
       <main id="main" className={`flex justify-center items-center py-6 ${isFullscreen ? "fullscreen" : ""}`}>
         {file == null ? <UploadArea fileIsValid={fileIsValid} onFileUpload={handleFileUpload} onFileDrop={handleFileDrop}></UploadArea> :
-          <ImageCanvas file={file} imageFilters={imageFilters} gridMode={gridMode}></ImageCanvas>}
+          <ImageCanvas file={file} imageFilters={imageFilters} gridMode={gridMode} onFileDrop={handleFileDrop}></ImageCanvas>}
       </main>
     </div>
   );
