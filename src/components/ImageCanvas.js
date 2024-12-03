@@ -45,12 +45,12 @@ export default function ImageCanvas({ file, imageFilters, gridMode }) {
             <div id="verticalRight" className="absolute z-40 w-[1px] h-full bg-white/50"></div>
 
             {showSlider ?
-                <ImgComparisonSlider>
+                <ImgComparisonSlider className="slider">
                     <img className={filterClassFromId(activeIds[0])} slot="first" src={file} alt={file.name} />
                     <img className={filterClassFromId(activeIds[1])} slot="second" src={file} alt={file.name} />
                     <div slot="handle" className="inline-flex">
-                        <ChevronLeftIcon className="w-8 h-8 text-white"></ChevronLeftIcon>
-                        <ChevronRightIcon className="w-8 h-8 text-white"></ChevronRightIcon>
+                        <ChevronLeftIcon className="w-6 h-6 text-white/60"></ChevronLeftIcon>
+                        <ChevronRightIcon className="w-6 h-6 text-white/60"></ChevronRightIcon>
                     </div>
                 </ImgComparisonSlider> : <img className={filterClassFromId(activeIds[0])} src={file} alt={file.name} />}
         </div>

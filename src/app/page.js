@@ -114,10 +114,11 @@ export default function Home() {
 
   return (
     <div ref={fullscreenRef} className={`flex flex-col ${darkMode == true ? "dark bg-background" : "bg-foreground/10"}`}>
-      <nav className="flex z-50 flex-row justify-between items-center px-5 py-3 bg-foreground">
+      <nav className={`flex z-50 flex-row justify-between items-center px-5 py-3 ${isFullscreen ? "absolute top-1 left-1 w-full rounded-lg bg-foreground/40 md:w-1/4" : "bg-foreground"}`}>
         <div className="flex relative justify-center items-center">
           <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex space-x-2 group hover:cursor-pointer">
             <Image
+              className={`${isFullscreen ? "opacity-70" : ""}`}
               src="/logo-icon.png"
               alt="Logo"
               width={22}
@@ -153,7 +154,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <main id="main" className="flex justify-center items-center py-6">
+      <main id="main" className={`flex justify-center items-center py-6 ${isFullscreen ? "fullscreen" : ""}`}>
         {file == null ? <UploadArea fileIsValid={fileIsValid} onFileUpload={handleFileUpload} onFileDrop={handleFileDrop}></UploadArea> :
           <ImageCanvas file={file} imageFilters={imageFilters} gridMode={gridMode}></ImageCanvas>}
       </main>
