@@ -13,6 +13,7 @@ It is functional. The basics are here, but there are various improvements that c
 
 - [ ] Ensure that drag and drop is working.
 - [ ] Menus should close without user needing to manually close them.
+- [ ] Add other filters: blur, etc.
 
 If you'd like to help out, please take a look at the Contributing section below.
 
