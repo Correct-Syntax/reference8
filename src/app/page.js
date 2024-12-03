@@ -92,11 +92,21 @@ export default function Home() {
     setDarkMode(!darkMode);
   }
 
-  function handleFileUpload(e) {
-    var uploadedFile = e.target.files[0];
-    if (/\.(jpe?g|png)$/i.test(uploadedFile.name) === true) {
+  function handleFileUpload(event) {
+    const uploadedFile = event.target.files[0];
+    setNewFile(uploadedFile);
+  }
+
+  function handleFileDrop(event) {
+    event.preventDefault();
+    const droppedFiles = event.dataTransfer.files;
+    setNewFile(droppedFiles[0]);
+  };
+
+  function setNewFile(file) {
+    if (/\.(jpe?g|png)$/i.test(file.name) === true) {
       setFileIsValid(true);
-      setFile(URL.createObjectURL(uploadedFile));
+      setFile(URL.createObjectURL(file));
     } else {
       setFileIsValid(false);
     }
@@ -144,7 +154,7 @@ export default function Home() {
       </nav>
 
       <main id="main" className="flex justify-center items-center py-6">
-        {file == null ? <UploadArea fileIsValid={fileIsValid} onFileUpload={handleFileUpload}></UploadArea> :
+        {file == null ? <UploadArea fileIsValid={fileIsValid} onFileUpload={handleFileUpload} onFileDrop={handleFileDrop}></UploadArea> :
           <ImageCanvas file={file} imageFilters={imageFilters} gridMode={gridMode}></ImageCanvas>}
       </main>
     </div>
