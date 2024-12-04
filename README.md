@@ -6,9 +6,9 @@ Web-based photo reference tool for artists and creatives.
 
 Launch the latest build of [Reference8](https://reference8.com) in your browser.
 
-
-## Status/Todo
-
+- [x] Toggle fullscreen.
+- [x] Select photo or drag and drop to upload.
+- [x] Drag and drop to replace photo.
 - [ ] Menus should close without user needing to manually close them.
 - [ ] Add other filters: blur, etc.
 
