@@ -113,7 +113,7 @@ export default function Home() {
   }
 
   return (
-    <div ref={fullscreenRef} className={`flex flex-col ${darkMode == true ? "dark bg-background" : "bg-foreground/10"}`}>
+    <div ref={fullscreenRef} className={`flex flex-col overflow-hidden ${darkMode == true ? "dark bg-background" : "bg-foreground/10"}`}>
       <nav className={`flex z-50 flex-row justify-between items-center px-5 py-3 ${isFullscreen ? "absolute top-1 left-1 w-full rounded-lg opacity-0 transition-opacity duration-300 bg-foreground/40 hover:opacity-100" : "bg-foreground"}`}>
         <div className="flex relative justify-center items-center">
           <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex items-center space-x-2 group hover:cursor-pointer">
