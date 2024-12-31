@@ -43,6 +43,7 @@ const imageFiltersConst = [
   { id: 0, name: "Original", thumbnail: "/original.jpg", },
   { id: 1, name: "Grayscale", thumbnail: "/grayscale.jpg", },
   { id: 2, name: "High Contrast", thumbnail: "high-contrast.jpg", },
+  { id: 3, name: "Blur", thumbnail: "blur.jpg", },
 ];
 
 
@@ -54,7 +55,7 @@ export default function Home() {
   const [aboutMenuOpen, setAboutMenuOpen] = useState(false);
 
   const [gridMode, setGridMode] = useState(0);
-  const [imageFilters, setImageFilters] = useState([true, false, false]);
+  const [imageFilters, setImageFilters] = useState([true, false, false, false]);
 
   const [gridModeMenuOpen, setGridModeMenuOpen] = useState(false);
   const [imageFiltersMenuOpen, setImageFiltersMenuOpen] = useState(false);

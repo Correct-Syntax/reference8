@@ -12,6 +12,8 @@ function filterClassFromId(filterId) {
             return "grayscale";
         case 2:
             return "high-contrast";
+        case 3:
+            return "gaussian-blur";
     }
 }
 

@@ -58,6 +58,10 @@ body {
   filter: contrast(140%);
 }
 
+.gaussian-blur {
+  filter: blur(5px);
+}
+
 .grid-overlay {
   max-height: calc(100vh - 48px);
 }

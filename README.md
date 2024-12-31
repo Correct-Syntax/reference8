@@ -9,8 +9,8 @@ Launch the latest build of [Reference8](https://reference8.com) in your browser.
 - [x] Toggle fullscreen.
 - [x] Select photo or drag and drop to upload.
 - [x] Drag and drop to replace photo.
+- [x] Add other filters: blur, etc.
 - [ ] Menus should close without user needing to manually close them.
-- [ ] Add other filters: blur, etc.
 
 If you'd like to help out, please take a look at the Contributing section below.
 
