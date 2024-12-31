@@ -28,7 +28,7 @@ function gridClassesFromId(gridModeId) {
     }
 }
 
-export default function ImageCanvas({ file, imageFilters, gridMode, onFileDrop }) {
+export default function ImageCanvas({ file, imageFilters, gridMode, onFileDrop, isFullscreen }) {
     // List containing the one/two filter ids that are active.
     var activeIds = [];
     for (var i = 0; i < imageFilters.length; i++) {
@@ -38,7 +38,7 @@ export default function ImageCanvas({ file, imageFilters, gridMode, onFileDrop }
     }
     var showSlider = imageFilters.filter(i => i == true).length > 1;
     return (
-        <div onDrop={(event) => onFileDrop(event)} onDragOver={(event) => event.preventDefault()} id="imageCanvas" className={`relative w-auto grid-overlay ${gridClassesFromId(gridMode)}`}>
+        <div onDrop={(event) => onFileDrop(event)} onDragOver={(event) => event.preventDefault()} id="imageCanvas" className={`relative w-auto grid-overlay ${gridClassesFromId(gridMode)} ${isFullscreen == true ? "fs" : ""}`}>
             <div id="horizontalTop" className="absolute z-40 w-full h-[1px] bg-white/50"></div>
             <div id="horizontalBottom" className="absolute z-40 w-full h-[1px] bg-white/50"></div>
             <div id="verticalLeft" className="absolute z-40 w-[1px] h-full bg-white/50"></div>

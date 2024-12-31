@@ -20,6 +20,11 @@ body {
   height: calc(100vh - 48px);
 }
 
+#main.fullscreen {
+  width: auto;
+  height: 100vh !important;
+}
+
 #main .fullscreen,
 .fullscreen #imageCanvas img,
 .fullscreen #uploadArea {
@@ -32,6 +37,10 @@ body {
   height: auto;
   max-width: 100%;
   max-height: calc(100vh - 48px);
+}
+
+#imageCanvas.fs img {
+  max-height: 100vh !important;
 }
 
 #uploadArea {
@@ -51,6 +60,10 @@ body {
 
 .grid-overlay {
   max-height: calc(100vh - 48px);
+}
+
+.fs.grid-overlay {
+  max-height: 100vh !important;
 }
 
 /* None */
