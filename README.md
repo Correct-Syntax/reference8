@@ -7,10 +7,10 @@ Web-based photo reference tool for artists and creatives.
 Launch the latest build of [Reference8](https://reference8.com) in your browser.
 
 - [x] Toggle fullscreen.
-- [x] Select photo or drag and drop to upload.
-- [x] Drag and drop to replace photo.
-- [x] Add other filters: blur, etc.
-- [ ] Menus should close without user needing to manually close them.
+- [x] Select a photo or drag and drop to upload.
+- [x] Drag and drop to replace the photo.
+- [x] Overlay different types of grids over the photo.
+- [x] Compare the original photo with photo with a grayscale, high contrast, or blur filter applied. 
 
 If you'd like to help out, please take a look at the Contributing section below.
 
