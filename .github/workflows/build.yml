@@ -30,4 +30,5 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         password: ${{ secrets.SERVER_PASSWORD }}
         port: 65002
+        protocol: ftps
         server-dir: /domains/reference8.com/public_html/
