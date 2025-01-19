@@ -24,11 +24,10 @@ jobs:
         npm run build
     
     - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      uses: SamKirkland/web-deploy@v1
       with:
-        server: reference8.com
-        username: ${{ secrets.SERVER_USERNAME }}
-        password: ${{ secrets.SERVER_PASSWORD }}
-        port: 65002
-        protocol: ftps
-        server-dir: /domains/reference8.com/public_html/
+        target-server: reference8.com
+        remote-user: ${{ secrets.SERVER_USERNAME }}
+        private-ssh-key: ${{ secrets.SERVER_SSH_KEY }}
+        ssh-port: 65002
+        destination-path: /domains/reference8.com/public_html/
