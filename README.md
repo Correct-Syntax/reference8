@@ -14,7 +14,6 @@ Launch the latest build of [Reference8](https://reference8.com) in your browser.
 
 If you'd like to help out, please take a look at the Contributing section below.
 
-
 ## Installing
 
 ```bash
