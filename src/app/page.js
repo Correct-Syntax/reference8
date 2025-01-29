@@ -24,6 +24,7 @@ import IconButton from "@/components/IconButton";
 import ImageCanvas from "@/components/ImageCanvas";
 import UploadArea from "@/components/UploadArea";
 import AboutDropDownMenu from "@/components/AboutDropDownMenu";
+import useClickOutside from "@/hooks/ClickOutsideHook";
 
 
 const aboutMenuItemsConst = [
@@ -52,13 +53,13 @@ export default function Home() {
 
   const [darkMode, setDarkMode] = useState(true);
 
-  const [aboutMenuOpen, setAboutMenuOpen] = useState(false);
+  const [aboutMenuRef, aboutMenuOpen, setAboutMenuOpen] = useClickOutside();
 
   const [gridMode, setGridMode] = useState(0);
   const [imageFilters, setImageFilters] = useState([true, false, false, false]);
 
-  const [gridModeMenuOpen, setGridModeMenuOpen] = useState(false);
-  const [imageFiltersMenuOpen, setImageFiltersMenuOpen] = useState(false);
+  const [gridModeMenuRef, gridModeMenuOpen, setGridModeMenuOpen] = useClickOutside();
+  const [imageFiltersMenuRef, imageFiltersMenuOpen, setImageFiltersMenuOpen] = useClickOutside();
 
   const [file, setFile] = useState(null);
   const [fileIsValid, setFileIsValid] = useState(null);
@@ -117,7 +118,7 @@ export default function Home() {
     <div ref={fullscreenRef} className={`flex flex-col overflow-hidden ${darkMode == true ? "dark bg-background" : "bg-foreground/10"}`}>
       <nav className={`flex z-50 flex-row justify-between items-center px-5 py-3 ${isFullscreen ? "absolute top-1 left-1 w-full rounded-lg opacity-0 transition-opacity duration-300 bg-foreground/40 hover:opacity-100" : "bg-foreground"}`}>
         <div className="flex relative justify-center items-center">
-          <div onClick={() => setAboutMenuOpen(!aboutMenuOpen)} className="inline-flex items-center space-x-2 group hover:cursor-pointer">
+          <div ref={aboutMenuRef} tabIndex={0} className="inline-flex items-center space-x-2 group hover:cursor-pointer">
             <Image
               className={`h-min ${isFullscreen ? "opacity-70" : ""}`}
               src="/logo-icon.png"
@@ -132,13 +133,13 @@ export default function Home() {
         </div>
 
         <div className="flex flex-row space-x-4">
-          <div className="flex relative">
-            <IconDropDownButton Icon={ShadowInnerIcon} active={imageFiltersMenuOpen} onClick={() => setImageFiltersMenuOpen(!imageFiltersMenuOpen)}>
+          <div className="flex relative" ref={imageFiltersMenuRef} tabIndex={0}>
+            <IconDropDownButton Icon={ShadowInnerIcon} active={imageFiltersMenuOpen}>
             </IconDropDownButton>
             {imageFiltersMenuOpen && <ImageFiltersDropDownMenu items={imageFiltersConst} selected={imageFilters} onClick={handleSetImageFilters}></ImageFiltersDropDownMenu>}
           </div>
-          <div className="flex relative">
-            <IconDropDownButton Icon={gridModesConst[gridMode].icon} active={gridModeMenuOpen} onClick={() => setGridModeMenuOpen(!gridModeMenuOpen)}>
+          <div className="flex relative" ref={gridModeMenuRef} tabIndex={0} >
+            <IconDropDownButton Icon={gridModesConst[gridMode].icon} active={gridModeMenuOpen}>
             </IconDropDownButton>
             {gridModeMenuOpen && <DropDownMenu items={gridModesConst} selected={gridMode} onClick={handleSetGridMode}></DropDownMenu>}
           </div>
