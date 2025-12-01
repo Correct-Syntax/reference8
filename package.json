@@ -2,6 +2,7 @@
   "name": "reference8",
   "version": "0.3.0",
   "private": true,
+  "homepage": "https://reference8.github.io",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
